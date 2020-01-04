@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="09d4b79978364067b9fffac73a3b81ad" Name="Diagram1" ZoomLevel="90">
+        <EntityTypeShape EntityType="DeltaDBModel.Ruta" Width="2.125" PointX="3" PointY="7.375" />
+        <EntityTypeShape EntityType="DeltaDBModel.TipoCamion" Width="1.5" PointX="0.75" PointY="4.375" />
+        <EntityTypeShape EntityType="DeltaDBModel.TipoServicio" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="DeltaDBModel.Afiliacion" Width="1.5" PointX="5.125" PointY="14.875" />
+        <EntityTypeShape EntityType="DeltaDBModel.TipoUnidadMedida" Width="1.5" PointX="5.125" PointY="18.625" />
+        <EntityTypeShape EntityType="DeltaDBModel.UnidadMedida" Width="1.5" PointX="7.375" PointY="18.125" />
+        <AssociationConnector Association="DeltaDBModel.FK__UnidadMed__id_ti__7C1A6C5A" />
+        <EntityTypeShape EntityType="DeltaDBModel.Transportista" Width="1.5" PointX="3" PointY="11" />
+        <AssociationConnector Association="DeltaDBModel.FK__Transport__id_ti__79FD19BE" />
+        <EntityTypeShape EntityType="DeltaDBModel.Transportista_Ruta" Width="1.5" PointX="7.875" PointY="12.625" />
+        <AssociationConnector Association="DeltaDBModel.FK__Transport__id_ru__39E294A9" />
+        <AssociationConnector Association="DeltaDBModel.FK__Transport__id_tr__38EE7070" />
+        <EntityTypeShape EntityType="DeltaDBModel.TipoServicio_Afiliacion" Width="1.5" PointX="7.625" PointY="5.875" />
+        <AssociationConnector Association="DeltaDBModel.FK__TipoServi__id_af__52AE4273" />
+        <AssociationConnector Association="DeltaDBModel.FK__TipoServi__id_ti__51BA1E3A" />
+        <EntityTypeShape EntityType="DeltaDBModel.sysdiagrams" Width="1.5" PointX="10.375" PointY="4.75" />
+        <EntityTypeShape EntityType="DeltaDBModel.Transportista_Afiliacion" Width="1.5" PointX="10.375" PointY="15" />
+        <AssociationConnector Association="DeltaDBModel.FK__Transport__id_af__731B1205" />
+        <AssociationConnector Association="DeltaDBModel.FK__Transport__id_tr__7226EDCC" />
+        <EntityTypeShape EntityType="DeltaDBModel.Cliente" Width="1.5" PointX="7.375" PointY="8.75" />
+        <AssociationConnector Association="DeltaDBModel.FK__Cliente__id_afil__0FB750B3" />
+        <EntityTypeShape EntityType="DeltaDBModel.SolicitudCotizacion" Width="1.5" PointX="10.625" PointY="7.5" />
+        <AssociationConnector Association="DeltaDBModel.FK__Solicitud__id_af__10AB74EC" />
+        <AssociationConnector Association="DeltaDBModel.FK__Solicitud__id_cl__04459E07" />
+        <AssociationConnector Association="DeltaDBModel.FK__Solicitud__id_ru__07220AB2" />
+        <AssociationConnector Association="DeltaDBModel.FK__Solicitud__id_ru__08162EEB" />
+        <AssociationConnector Association="DeltaDBModel.FK__Solicitud__id_se__0539C240" />
+        <AssociationConnector Association="DeltaDBModel.FK__Solicitud__id_ti__062DE679" />
+        <AssociationConnector Association="DeltaDBModel.FK__Solicitud__id_un__090A5324" />
+        <AssociationConnector Association="DeltaDBModel.FK__Solicitud__id_un__09FE775D" />
+        <AssociationConnector Association="DeltaDBModel.FK__Solicitud__id_un__0AF29B96" />
+        <AssociationConnector Association="DeltaDBModel.FK__Solicitud__id_un__0BE6BFCF" />
+        <EntityTypeShape EntityType="DeltaDBModel.ConfiguracionTarea" Width="1.5" PointX="11.375" PointY="1" />
+        <EntityTypeShape EntityType="DeltaDBModel.InfoArchivo" Width="1.5" PointX="13.625" PointY="1.375" />
+        <AssociationConnector Association="DeltaDBModel.FK__InfoArchi__id_ta__39AD8A7F" />
+        <EntityTypeShape EntityType="DeltaDBModel.ConfiguracionAPI" Width="1.5" PointX="15.625" PointY="5" />
+        <EntityTypeShape EntityType="DeltaDBModel.EntornoAPI" Width="1.5" PointX="13.375" PointY="5.375" />
+        <AssociationConnector Association="DeltaDBModel.FK__Configura__id_en__48EFCE0F" />
+        <EntityTypeShape EntityType="DeltaDBModel.usuario" Width="1.5" PointX="7.375" PointY="21.75" />
+        <AssociationConnector Association="DeltaDBModel.FK__usuario__id_afil__3F9B6DFF" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

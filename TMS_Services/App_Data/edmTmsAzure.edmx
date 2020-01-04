@@ -1,0 +1,1518 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DeltaDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Afiliacion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="empresa" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="create_at" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombres" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="apellidos" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="empresa" Type="varchar" MaxLength="200" />
+          <Property Name="celular" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="create_at" Type="datetime" Nullable="false" />
+          <Property Name="id_afiliacion" Type="int" />
+        </EntityType>
+        <EntityType Name="ConfiguracionAPI">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="urlApi" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="nombreDb" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="pass" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="estado" Type="int" Nullable="false" />
+          <Property Name="id_entornoApi" Type="int" Nullable="false" />
+          <Property Name="create_at" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ConfiguracionTarea">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codigo" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="estado" Type="int" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="500" />
+          <Property Name="permitirDocs" Type="int" Nullable="false" />
+          <Property Name="create_at" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EntornoAPI">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="create_at" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InfoArchivo">
+          <Key>
+            <PropertyRef Name="id_tarea" />
+            <PropertyRef Name="id_proyecto" />
+          </Key>
+          <Property Name="id_tarea" Type="int" Nullable="false" />
+          <Property Name="id_proyecto" Type="int" Nullable="false" />
+          <Property Name="create_at" Type="datetime" Nullable="false" />
+          <Property Name="extension" Type="varchar" MaxLength="5" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ruta">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pais" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="200" />
+          <Property Name="create_at" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SolicitudCotizacion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_cliente" Type="int" Nullable="false" />
+          <Property Name="id_servicio" Type="int" Nullable="false" />
+          <Property Name="id_tipoCamion" Type="int" />
+          <Property Name="id_rutaOrigen" Type="int" />
+          <Property Name="ciudadOrigen" Type="varchar" MaxLength="200" />
+          <Property Name="id_rutaDestino" Type="int" />
+          <Property Name="ciudadDestino" Type="varchar" MaxLength="200" />
+          <Property Name="pesoCarga" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="id_unidadPeso" Type="int" />
+          <Property Name="volumenCarga" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="id_unidadVolumen" Type="int" />
+          <Property Name="imoCarga" Type="bit" />
+          <Property Name="capacidadAlmacenamiento" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="id_unidadCapacidad" Type="int" />
+          <Property Name="tiempoAlmacenamiento" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="id_unidadTiempo" Type="int" />
+          <Property Name="comentarios" Type="varchar" MaxLength="500" />
+          <Property Name="create_at" Type="datetime" Nullable="false" />
+          <Property Name="id_afiliacion" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TipoCamion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tipo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="200" />
+          <Property Name="create_at" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoServicio">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="servicio" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="create_at" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoServicio_Afiliacion">
+          <Key>
+            <PropertyRef Name="id_tipoServicio" />
+            <PropertyRef Name="id_afiliacion" />
+          </Key>
+          <Property Name="id_tipoServicio" Type="int" Nullable="false" />
+          <Property Name="id_afiliacion" Type="int" Nullable="false" />
+          <Property Name="estado" Type="int" Nullable="false" />
+          <Property Name="create_at" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoUnidadMedida">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="create_at" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Transportista">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nroLicencia" Type="bigint" Nullable="false" />
+          <Property Name="nombres" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="apellidos" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="empresa" Type="varchar" MaxLength="200" />
+          <Property Name="correoElectronico" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="celular" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="id_tipoCamion" Type="int" Nullable="false" />
+          <Property Name="create_at" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Transportista_Afiliacion">
+          <Key>
+            <PropertyRef Name="id_transportista" />
+            <PropertyRef Name="id_afiliacion" />
+          </Key>
+          <Property Name="id_transportista" Type="int" Nullable="false" />
+          <Property Name="id_afiliacion" Type="int" Nullable="false" />
+          <Property Name="estado" Type="int" Nullable="false" />
+          <Property Name="create_at" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Transportista_Ruta">
+          <Key>
+            <PropertyRef Name="id_transportista" />
+            <PropertyRef Name="id_ruta" />
+          </Key>
+          <Property Name="id_transportista" Type="int" Nullable="false" />
+          <Property Name="id_ruta" Type="int" Nullable="false" />
+          <Property Name="estado" Type="int" Nullable="false" />
+          <Property Name="create_at" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UnidadMedida">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="abreviatura" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="id_tipoUnidad" Type="int" Nullable="false" />
+          <Property Name="create_at" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="correo" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="tipo_c" Type="tinyint" Nullable="false" />
+          <Property Name="tipo_s" Type="tinyint" Nullable="false" />
+          <Property Name="tipo_e" Type="tinyint" Nullable="false" />
+          <Property Name="id_afiliacion" Type="int" />
+          <Property Name="create_at" Type="datetime" Nullable="false" />
+          <Property Name="enviar_password" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Cliente__id_afil__0FB750B3">
+          <End Role="Afiliacion" Type="Self.Afiliacion" Multiplicity="0..1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Afiliacion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="id_afiliacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Configura__id_en__48EFCE0F">
+          <End Role="EntornoAPI" Type="Self.EntornoAPI" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ConfiguracionAPI" Type="Self.ConfiguracionAPI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EntornoAPI">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ConfiguracionAPI">
+              <PropertyRef Name="id_entornoApi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__InfoArchi__id_ta__39AD8A7F">
+          <End Role="ConfiguracionTarea" Type="Self.ConfiguracionTarea" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="InfoArchivo" Type="Self.InfoArchivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConfiguracionTarea">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="InfoArchivo">
+              <PropertyRef Name="id_tarea" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Solicitud__id_af__10AB74EC">
+          <End Role="Afiliacion" Type="Self.Afiliacion" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SolicitudCotizacion" Type="Self.SolicitudCotizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Afiliacion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SolicitudCotizacion">
+              <PropertyRef Name="id_afiliacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Solicitud__id_cl__04459E07">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SolicitudCotizacion" Type="Self.SolicitudCotizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SolicitudCotizacion">
+              <PropertyRef Name="id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Solicitud__id_ru__07220AB2">
+          <End Role="Ruta" Type="Self.Ruta" Multiplicity="0..1" />
+          <End Role="SolicitudCotizacion" Type="Self.SolicitudCotizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ruta">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SolicitudCotizacion">
+              <PropertyRef Name="id_rutaOrigen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Solicitud__id_ru__08162EEB">
+          <End Role="Ruta" Type="Self.Ruta" Multiplicity="0..1" />
+          <End Role="SolicitudCotizacion" Type="Self.SolicitudCotizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ruta">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SolicitudCotizacion">
+              <PropertyRef Name="id_rutaDestino" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Solicitud__id_se__0539C240">
+          <End Role="TipoServicio" Type="Self.TipoServicio" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SolicitudCotizacion" Type="Self.SolicitudCotizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoServicio">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SolicitudCotizacion">
+              <PropertyRef Name="id_servicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Solicitud__id_ti__062DE679">
+          <End Role="TipoCamion" Type="Self.TipoCamion" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SolicitudCotizacion" Type="Self.SolicitudCotizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoCamion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SolicitudCotizacion">
+              <PropertyRef Name="id_tipoCamion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Solicitud__id_un__090A5324">
+          <End Role="UnidadMedida" Type="Self.UnidadMedida" Multiplicity="0..1" />
+          <End Role="SolicitudCotizacion" Type="Self.SolicitudCotizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnidadMedida">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SolicitudCotizacion">
+              <PropertyRef Name="id_unidadPeso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Solicitud__id_un__09FE775D">
+          <End Role="UnidadMedida" Type="Self.UnidadMedida" Multiplicity="0..1" />
+          <End Role="SolicitudCotizacion" Type="Self.SolicitudCotizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnidadMedida">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SolicitudCotizacion">
+              <PropertyRef Name="id_unidadVolumen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Solicitud__id_un__0AF29B96">
+          <End Role="UnidadMedida" Type="Self.UnidadMedida" Multiplicity="0..1" />
+          <End Role="SolicitudCotizacion" Type="Self.SolicitudCotizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnidadMedida">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SolicitudCotizacion">
+              <PropertyRef Name="id_unidadCapacidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Solicitud__id_un__0BE6BFCF">
+          <End Role="UnidadMedida" Type="Self.UnidadMedida" Multiplicity="0..1" />
+          <End Role="SolicitudCotizacion" Type="Self.SolicitudCotizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnidadMedida">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SolicitudCotizacion">
+              <PropertyRef Name="id_unidadTiempo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TipoServi__id_af__52AE4273">
+          <End Role="Afiliacion" Type="Self.Afiliacion" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TipoServicio_Afiliacion" Type="Self.TipoServicio_Afiliacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Afiliacion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TipoServicio_Afiliacion">
+              <PropertyRef Name="id_afiliacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TipoServi__id_ti__51BA1E3A">
+          <End Role="TipoServicio" Type="Self.TipoServicio" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TipoServicio_Afiliacion" Type="Self.TipoServicio_Afiliacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoServicio">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TipoServicio_Afiliacion">
+              <PropertyRef Name="id_tipoServicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transport__id_af__731B1205">
+          <End Role="Afiliacion" Type="Self.Afiliacion" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Transportista_Afiliacion" Type="Self.Transportista_Afiliacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Afiliacion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Transportista_Afiliacion">
+              <PropertyRef Name="id_afiliacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transport__id_ru__6C6E1476">
+          <End Role="Ruta" Type="Self.Ruta" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Transportista_Ruta" Type="Self.Transportista_Ruta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ruta">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Transportista_Ruta">
+              <PropertyRef Name="id_ruta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transport__id_ti__5B438874">
+          <End Role="TipoCamion" Type="Self.TipoCamion" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Transportista" Type="Self.Transportista" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoCamion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Transportista">
+              <PropertyRef Name="id_tipoCamion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transport__id_tr__6B79F03D">
+          <End Role="Transportista" Type="Self.Transportista" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Transportista_Ruta" Type="Self.Transportista_Ruta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transportista">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Transportista_Ruta">
+              <PropertyRef Name="id_transportista" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transport__id_tr__7226EDCC">
+          <End Role="Transportista" Type="Self.Transportista" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Transportista_Afiliacion" Type="Self.Transportista_Afiliacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transportista">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Transportista_Afiliacion">
+              <PropertyRef Name="id_transportista" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UnidadMed__id_ti__1F2E9E6D">
+          <End Role="TipoUnidadMedida" Type="Self.TipoUnidadMedida" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UnidadMedida" Type="Self.UnidadMedida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoUnidadMedida">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="UnidadMedida">
+              <PropertyRef Name="id_tipoUnidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__usuario__id_afil__3F9B6DFF">
+          <End Role="Afiliacion" Type="Self.Afiliacion" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Afiliacion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="id_afiliacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="getNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="cad" Type="varchar(max)" Mode="In" />
+        </Function>
+        <EntityContainer Name="DeltaDBModelStoreContainer">
+          <EntitySet Name="Afiliacion" EntityType="Self.Afiliacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ConfiguracionAPI" EntityType="Self.ConfiguracionAPI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ConfiguracionTarea" EntityType="Self.ConfiguracionTarea" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EntornoAPI" EntityType="Self.EntornoAPI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InfoArchivo" EntityType="Self.InfoArchivo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ruta" EntityType="Self.Ruta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SolicitudCotizacion" EntityType="Self.SolicitudCotizacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoCamion" EntityType="Self.TipoCamion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoServicio" EntityType="Self.TipoServicio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoServicio_Afiliacion" EntityType="Self.TipoServicio_Afiliacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoUnidadMedida" EntityType="Self.TipoUnidadMedida" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Transportista" EntityType="Self.Transportista" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Transportista_Afiliacion" EntityType="Self.Transportista_Afiliacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Transportista_Ruta" EntityType="Self.Transportista_Ruta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UnidadMedida" EntityType="Self.UnidadMedida" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Cliente__id_afil__0FB750B3" Association="Self.FK__Cliente__id_afil__0FB750B3">
+            <End Role="Afiliacion" EntitySet="Afiliacion" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Configura__id_en__48EFCE0F" Association="Self.FK__Configura__id_en__48EFCE0F">
+            <End Role="EntornoAPI" EntitySet="EntornoAPI" />
+            <End Role="ConfiguracionAPI" EntitySet="ConfiguracionAPI" />
+          </AssociationSet>
+          <AssociationSet Name="FK__InfoArchi__id_ta__39AD8A7F" Association="Self.FK__InfoArchi__id_ta__39AD8A7F">
+            <End Role="ConfiguracionTarea" EntitySet="ConfiguracionTarea" />
+            <End Role="InfoArchivo" EntitySet="InfoArchivo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Solicitud__id_af__10AB74EC" Association="Self.FK__Solicitud__id_af__10AB74EC">
+            <End Role="Afiliacion" EntitySet="Afiliacion" />
+            <End Role="SolicitudCotizacion" EntitySet="SolicitudCotizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Solicitud__id_cl__04459E07" Association="Self.FK__Solicitud__id_cl__04459E07">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="SolicitudCotizacion" EntitySet="SolicitudCotizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Solicitud__id_ru__07220AB2" Association="Self.FK__Solicitud__id_ru__07220AB2">
+            <End Role="Ruta" EntitySet="Ruta" />
+            <End Role="SolicitudCotizacion" EntitySet="SolicitudCotizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Solicitud__id_ru__08162EEB" Association="Self.FK__Solicitud__id_ru__08162EEB">
+            <End Role="Ruta" EntitySet="Ruta" />
+            <End Role="SolicitudCotizacion" EntitySet="SolicitudCotizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Solicitud__id_se__0539C240" Association="Self.FK__Solicitud__id_se__0539C240">
+            <End Role="TipoServicio" EntitySet="TipoServicio" />
+            <End Role="SolicitudCotizacion" EntitySet="SolicitudCotizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Solicitud__id_ti__062DE679" Association="Self.FK__Solicitud__id_ti__062DE679">
+            <End Role="TipoCamion" EntitySet="TipoCamion" />
+            <End Role="SolicitudCotizacion" EntitySet="SolicitudCotizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Solicitud__id_un__090A5324" Association="Self.FK__Solicitud__id_un__090A5324">
+            <End Role="UnidadMedida" EntitySet="UnidadMedida" />
+            <End Role="SolicitudCotizacion" EntitySet="SolicitudCotizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Solicitud__id_un__09FE775D" Association="Self.FK__Solicitud__id_un__09FE775D">
+            <End Role="UnidadMedida" EntitySet="UnidadMedida" />
+            <End Role="SolicitudCotizacion" EntitySet="SolicitudCotizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Solicitud__id_un__0AF29B96" Association="Self.FK__Solicitud__id_un__0AF29B96">
+            <End Role="UnidadMedida" EntitySet="UnidadMedida" />
+            <End Role="SolicitudCotizacion" EntitySet="SolicitudCotizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Solicitud__id_un__0BE6BFCF" Association="Self.FK__Solicitud__id_un__0BE6BFCF">
+            <End Role="UnidadMedida" EntitySet="UnidadMedida" />
+            <End Role="SolicitudCotizacion" EntitySet="SolicitudCotizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TipoServi__id_af__52AE4273" Association="Self.FK__TipoServi__id_af__52AE4273">
+            <End Role="Afiliacion" EntitySet="Afiliacion" />
+            <End Role="TipoServicio_Afiliacion" EntitySet="TipoServicio_Afiliacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TipoServi__id_ti__51BA1E3A" Association="Self.FK__TipoServi__id_ti__51BA1E3A">
+            <End Role="TipoServicio" EntitySet="TipoServicio" />
+            <End Role="TipoServicio_Afiliacion" EntitySet="TipoServicio_Afiliacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transport__id_af__731B1205" Association="Self.FK__Transport__id_af__731B1205">
+            <End Role="Afiliacion" EntitySet="Afiliacion" />
+            <End Role="Transportista_Afiliacion" EntitySet="Transportista_Afiliacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transport__id_ru__6C6E1476" Association="Self.FK__Transport__id_ru__6C6E1476">
+            <End Role="Ruta" EntitySet="Ruta" />
+            <End Role="Transportista_Ruta" EntitySet="Transportista_Ruta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transport__id_ti__5B438874" Association="Self.FK__Transport__id_ti__5B438874">
+            <End Role="TipoCamion" EntitySet="TipoCamion" />
+            <End Role="Transportista" EntitySet="Transportista" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transport__id_tr__6B79F03D" Association="Self.FK__Transport__id_tr__6B79F03D">
+            <End Role="Transportista" EntitySet="Transportista" />
+            <End Role="Transportista_Ruta" EntitySet="Transportista_Ruta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transport__id_tr__7226EDCC" Association="Self.FK__Transport__id_tr__7226EDCC">
+            <End Role="Transportista" EntitySet="Transportista" />
+            <End Role="Transportista_Afiliacion" EntitySet="Transportista_Afiliacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UnidadMed__id_ti__1F2E9E6D" Association="Self.FK__UnidadMed__id_ti__1F2E9E6D">
+            <End Role="TipoUnidadMedida" EntitySet="TipoUnidadMedida" />
+            <End Role="UnidadMedida" EntitySet="UnidadMedida" />
+          </AssociationSet>
+          <AssociationSet Name="FK__usuario__id_afil__3F9B6DFF" Association="Self.FK__usuario__id_afil__3F9B6DFF">
+            <End Role="Afiliacion" EntitySet="Afiliacion" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DeltaDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DeltaDBEntities1" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="sp_getTask" ReturnType="Collection(DeltaDBModel.sp_getTask_Result)">
+            <Parameter Name="state" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Ruta" EntityType="DeltaDBModel.Ruta" />
+          <EntitySet Name="TipoCamion" EntityType="DeltaDBModel.TipoCamion" />
+          <EntitySet Name="TipoServicio" EntityType="DeltaDBModel.TipoServicio" />
+          <EntitySet Name="Afiliacion" EntityType="DeltaDBModel.Afiliacion" />
+          <EntitySet Name="TipoUnidadMedida" EntityType="DeltaDBModel.TipoUnidadMedida" />
+          <EntitySet Name="UnidadMedida" EntityType="DeltaDBModel.UnidadMedida" />
+          <AssociationSet Name="FK__UnidadMed__id_ti__7C1A6C5A" Association="DeltaDBModel.FK__UnidadMed__id_ti__7C1A6C5A">
+            <End Role="TipoUnidadMedida" EntitySet="TipoUnidadMedida" />
+            <End Role="UnidadMedida" EntitySet="UnidadMedida" />
+          </AssociationSet>
+          <EntitySet Name="Transportista" EntityType="DeltaDBModel.Transportista" />
+          <AssociationSet Name="FK__Transport__id_ti__79FD19BE" Association="DeltaDBModel.FK__Transport__id_ti__79FD19BE">
+            <End Role="TipoCamion" EntitySet="TipoCamion" />
+            <End Role="Transportista" EntitySet="Transportista" />
+          </AssociationSet>
+          <EntitySet Name="Transportista_Ruta" EntityType="DeltaDBModel.Transportista_Ruta" />
+          <AssociationSet Name="FK__Transport__id_ru__39E294A9" Association="DeltaDBModel.FK__Transport__id_ru__39E294A9">
+            <End Role="Ruta" EntitySet="Ruta" />
+            <End Role="Transportista_Ruta" EntitySet="Transportista_Ruta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transport__id_tr__38EE7070" Association="DeltaDBModel.FK__Transport__id_tr__38EE7070">
+            <End Role="Transportista" EntitySet="Transportista" />
+            <End Role="Transportista_Ruta" EntitySet="Transportista_Ruta" />
+          </AssociationSet>
+          <EntitySet Name="TipoServicio_Afiliacion" EntityType="DeltaDBModel.TipoServicio_Afiliacion" />
+          <AssociationSet Name="FK__TipoServi__id_af__52AE4273" Association="DeltaDBModel.FK__TipoServi__id_af__52AE4273">
+            <End Role="Afiliacion" EntitySet="Afiliacion" />
+            <End Role="TipoServicio_Afiliacion" EntitySet="TipoServicio_Afiliacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TipoServi__id_ti__51BA1E3A" Association="DeltaDBModel.FK__TipoServi__id_ti__51BA1E3A">
+            <End Role="TipoServicio" EntitySet="TipoServicio" />
+            <End Role="TipoServicio_Afiliacion" EntitySet="TipoServicio_Afiliacion" />
+          </AssociationSet>
+          <EntitySet Name="sysdiagrams" EntityType="DeltaDBModel.sysdiagrams" />
+          <EntitySet Name="Transportista_Afiliacion" EntityType="DeltaDBModel.Transportista_Afiliacion" />
+          <AssociationSet Name="FK__Transport__id_af__731B1205" Association="DeltaDBModel.FK__Transport__id_af__731B1205">
+            <End Role="Afiliacion" EntitySet="Afiliacion" />
+            <End Role="Transportista_Afiliacion" EntitySet="Transportista_Afiliacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transport__id_tr__7226EDCC" Association="DeltaDBModel.FK__Transport__id_tr__7226EDCC">
+            <End Role="Transportista" EntitySet="Transportista" />
+            <End Role="Transportista_Afiliacion" EntitySet="Transportista_Afiliacion" />
+          </AssociationSet>
+          <EntitySet Name="Cliente" EntityType="DeltaDBModel.Cliente" />
+          <AssociationSet Name="FK__Cliente__id_afil__0FB750B3" Association="DeltaDBModel.FK__Cliente__id_afil__0FB750B3">
+            <End Role="Afiliacion" EntitySet="Afiliacion" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <EntitySet Name="SolicitudCotizacion" EntityType="DeltaDBModel.SolicitudCotizacion" />
+          <AssociationSet Name="FK__Solicitud__id_af__10AB74EC" Association="DeltaDBModel.FK__Solicitud__id_af__10AB74EC">
+            <End Role="Afiliacion" EntitySet="Afiliacion" />
+            <End Role="SolicitudCotizacion" EntitySet="SolicitudCotizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Solicitud__id_cl__04459E07" Association="DeltaDBModel.FK__Solicitud__id_cl__04459E07">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="SolicitudCotizacion" EntitySet="SolicitudCotizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Solicitud__id_ru__07220AB2" Association="DeltaDBModel.FK__Solicitud__id_ru__07220AB2">
+            <End Role="Ruta" EntitySet="Ruta" />
+            <End Role="SolicitudCotizacion" EntitySet="SolicitudCotizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Solicitud__id_ru__08162EEB" Association="DeltaDBModel.FK__Solicitud__id_ru__08162EEB">
+            <End Role="Ruta" EntitySet="Ruta" />
+            <End Role="SolicitudCotizacion" EntitySet="SolicitudCotizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Solicitud__id_se__0539C240" Association="DeltaDBModel.FK__Solicitud__id_se__0539C240">
+            <End Role="TipoServicio" EntitySet="TipoServicio" />
+            <End Role="SolicitudCotizacion" EntitySet="SolicitudCotizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Solicitud__id_ti__062DE679" Association="DeltaDBModel.FK__Solicitud__id_ti__062DE679">
+            <End Role="TipoCamion" EntitySet="TipoCamion" />
+            <End Role="SolicitudCotizacion" EntitySet="SolicitudCotizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Solicitud__id_un__090A5324" Association="DeltaDBModel.FK__Solicitud__id_un__090A5324">
+            <End Role="UnidadMedida" EntitySet="UnidadMedida" />
+            <End Role="SolicitudCotizacion" EntitySet="SolicitudCotizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Solicitud__id_un__09FE775D" Association="DeltaDBModel.FK__Solicitud__id_un__09FE775D">
+            <End Role="UnidadMedida" EntitySet="UnidadMedida" />
+            <End Role="SolicitudCotizacion" EntitySet="SolicitudCotizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Solicitud__id_un__0AF29B96" Association="DeltaDBModel.FK__Solicitud__id_un__0AF29B96">
+            <End Role="UnidadMedida" EntitySet="UnidadMedida" />
+            <End Role="SolicitudCotizacion" EntitySet="SolicitudCotizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Solicitud__id_un__0BE6BFCF" Association="DeltaDBModel.FK__Solicitud__id_un__0BE6BFCF">
+            <End Role="UnidadMedida" EntitySet="UnidadMedida" />
+            <End Role="SolicitudCotizacion" EntitySet="SolicitudCotizacion" />
+          </AssociationSet>
+          <EntitySet Name="ConfiguracionTarea" EntityType="DeltaDBModel.ConfiguracionTarea" />
+          <EntitySet Name="InfoArchivo" EntityType="DeltaDBModel.InfoArchivo" />
+          <AssociationSet Name="FK__InfoArchi__id_ta__39AD8A7F" Association="DeltaDBModel.FK__InfoArchi__id_ta__39AD8A7F">
+            <End Role="ConfiguracionTarea" EntitySet="ConfiguracionTarea" />
+            <End Role="InfoArchivo" EntitySet="InfoArchivo" />
+          </AssociationSet>
+          <EntitySet Name="ConfiguracionAPI" EntityType="DeltaDBModel.ConfiguracionAPI" />
+          <EntitySet Name="EntornoAPI" EntityType="DeltaDBModel.EntornoAPI" />
+          <AssociationSet Name="FK__Configura__id_en__48EFCE0F" Association="DeltaDBModel.FK__Configura__id_en__48EFCE0F">
+            <End Role="EntornoAPI" EntitySet="EntornoAPI" />
+            <End Role="ConfiguracionAPI" EntitySet="ConfiguracionAPI" />
+          </AssociationSet>
+          <EntitySet Name="usuario" EntityType="DeltaDBModel.usuario" />
+          <AssociationSet Name="FK__usuario__id_afil__3F9B6DFF" Association="DeltaDBModel.FK__usuario__id_afil__3F9B6DFF">
+            <End Role="Afiliacion" EntitySet="Afiliacion" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+          </EntityContainer>
+        <ComplexType Name="sp_getTask_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="codigo" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="tarea" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="500" />
+        </ComplexType>
+        <EntityType Name="Ruta">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pais" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="create_at" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Transportista_Ruta" Relationship="DeltaDBModel.FK__Transport__id_ru__39E294A9" FromRole="Ruta" ToRole="Transportista_Ruta" />
+          <NavigationProperty Name="SolicitudCotizacion" Relationship="DeltaDBModel.FK__Solicitud__id_ru__07220AB2" FromRole="Ruta" ToRole="SolicitudCotizacion" />
+          <NavigationProperty Name="SolicitudCotizacion1" Relationship="DeltaDBModel.FK__Solicitud__id_ru__08162EEB" FromRole="Ruta" ToRole="SolicitudCotizacion" />
+          </EntityType>
+        <EntityType Name="TipoCamion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="create_at" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Transportista" Relationship="DeltaDBModel.FK__Transport__id_ti__79FD19BE" FromRole="TipoCamion" ToRole="Transportista" />
+          <NavigationProperty Name="SolicitudCotizacion" Relationship="DeltaDBModel.FK__Solicitud__id_ti__062DE679" FromRole="TipoCamion" ToRole="SolicitudCotizacion" />
+        </EntityType>
+        <EntityType Name="TipoServicio">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="servicio" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="create_at" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="TipoServicio_Afiliacion" Relationship="DeltaDBModel.FK__TipoServi__id_ti__51BA1E3A" FromRole="TipoServicio" ToRole="TipoServicio_Afiliacion" />
+          <NavigationProperty Name="SolicitudCotizacion" Relationship="DeltaDBModel.FK__Solicitud__id_se__0539C240" FromRole="TipoServicio" ToRole="SolicitudCotizacion" />
+        </EntityType>
+        <EntityType Name="Afiliacion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="empresa" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="create_at" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="TipoServicio_Afiliacion" Relationship="DeltaDBModel.FK__TipoServi__id_af__52AE4273" FromRole="Afiliacion" ToRole="TipoServicio_Afiliacion" />
+          <NavigationProperty Name="Transportista_Afiliacion" Relationship="DeltaDBModel.FK__Transport__id_af__731B1205" FromRole="Afiliacion" ToRole="Transportista_Afiliacion" />
+          <NavigationProperty Name="Cliente" Relationship="DeltaDBModel.FK__Cliente__id_afil__0FB750B3" FromRole="Afiliacion" ToRole="Cliente" />
+          <NavigationProperty Name="SolicitudCotizacion" Relationship="DeltaDBModel.FK__Solicitud__id_af__10AB74EC" FromRole="Afiliacion" ToRole="SolicitudCotizacion" />
+          <NavigationProperty Name="usuario" Relationship="DeltaDBModel.FK__usuario__id_afil__3F9B6DFF" FromRole="Afiliacion" ToRole="usuario" />
+          </EntityType>
+        <EntityType Name="TipoUnidadMedida">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="create_at" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="UnidadMedida" Relationship="DeltaDBModel.FK__UnidadMed__id_ti__7C1A6C5A" FromRole="TipoUnidadMedida" ToRole="UnidadMedida" />
+        </EntityType>
+        <EntityType Name="UnidadMedida">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="id_tipoUnidad" Type="Int32" Nullable="false" />
+          <Property Name="create_at" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="TipoUnidadMedida" Relationship="DeltaDBModel.FK__UnidadMed__id_ti__7C1A6C5A" FromRole="UnidadMedida" ToRole="TipoUnidadMedida" />
+          <Property Name="abreviatura" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SolicitudCotizacion" Relationship="DeltaDBModel.FK__Solicitud__id_un__090A5324" FromRole="UnidadMedida" ToRole="SolicitudCotizacion" />
+          <NavigationProperty Name="SolicitudCotizacion1" Relationship="DeltaDBModel.FK__Solicitud__id_un__09FE775D" FromRole="UnidadMedida" ToRole="SolicitudCotizacion" />
+          <NavigationProperty Name="SolicitudCotizacion2" Relationship="DeltaDBModel.FK__Solicitud__id_un__0AF29B96" FromRole="UnidadMedida" ToRole="SolicitudCotizacion" />
+          <NavigationProperty Name="SolicitudCotizacion3" Relationship="DeltaDBModel.FK__Solicitud__id_un__0BE6BFCF" FromRole="UnidadMedida" ToRole="SolicitudCotizacion" />
+          </EntityType>
+        <Association Name="FK__UnidadMed__id_ti__7C1A6C5A">
+          <End Type="DeltaDBModel.TipoUnidadMedida" Role="TipoUnidadMedida" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DeltaDBModel.UnidadMedida" Role="UnidadMedida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoUnidadMedida">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="UnidadMedida">
+              <PropertyRef Name="id_tipoUnidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Transportista">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nroLicencia" Type="Int64" Nullable="false" />
+          <Property Name="nombres" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="apellidos" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="empresa" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="celular" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="id_tipoCamion" Type="Int32" Nullable="false" />
+          <Property Name="create_at" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="TipoCamion" Relationship="DeltaDBModel.FK__Transport__id_ti__79FD19BE" FromRole="Transportista" ToRole="TipoCamion" />
+          <NavigationProperty Name="Transportista_Ruta" Relationship="DeltaDBModel.FK__Transport__id_tr__38EE7070" FromRole="Transportista" ToRole="Transportista_Ruta" />
+          <Property Name="correoElectronico" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Transportista_Afiliacion" Relationship="DeltaDBModel.FK__Transport__id_tr__7226EDCC" FromRole="Transportista" ToRole="Transportista_Afiliacion" />
+        </EntityType>
+        <Association Name="FK__Transport__id_ti__79FD19BE">
+          <End Type="DeltaDBModel.TipoCamion" Role="TipoCamion" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DeltaDBModel.Transportista" Role="Transportista" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoCamion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Transportista">
+              <PropertyRef Name="id_tipoCamion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Transportista_Ruta">
+          <Key>
+            <PropertyRef Name="id_transportista" />
+            <PropertyRef Name="id_ruta" />
+          </Key>
+          <Property Name="id_transportista" Type="Int32" Nullable="false" />
+          <Property Name="id_ruta" Type="Int32" Nullable="false" />
+          <Property Name="estado" Type="Int32" Nullable="false" />
+          <Property Name="create_at" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Ruta" Relationship="DeltaDBModel.FK__Transport__id_ru__39E294A9" FromRole="Transportista_Ruta" ToRole="Ruta" />
+          <NavigationProperty Name="Transportista" Relationship="DeltaDBModel.FK__Transport__id_tr__38EE7070" FromRole="Transportista_Ruta" ToRole="Transportista" />
+        </EntityType>
+        <Association Name="FK__Transport__id_ru__39E294A9">
+          <End Type="DeltaDBModel.Ruta" Role="Ruta" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DeltaDBModel.Transportista_Ruta" Role="Transportista_Ruta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ruta">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Transportista_Ruta">
+              <PropertyRef Name="id_ruta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transport__id_tr__38EE7070">
+          <End Type="DeltaDBModel.Transportista" Role="Transportista" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DeltaDBModel.Transportista_Ruta" Role="Transportista_Ruta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transportista">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Transportista_Ruta">
+              <PropertyRef Name="id_transportista" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TipoServicio_Afiliacion">
+          <Key>
+            <PropertyRef Name="id_tipoServicio" />
+            <PropertyRef Name="id_afiliacion" />
+          </Key>
+          <Property Name="id_tipoServicio" Type="Int32" Nullable="false" />
+          <Property Name="id_afiliacion" Type="Int32" Nullable="false" />
+          <Property Name="estado" Type="Int32" Nullable="false" />
+          <Property Name="create_at" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Afiliacion" Relationship="DeltaDBModel.FK__TipoServi__id_af__52AE4273" FromRole="TipoServicio_Afiliacion" ToRole="Afiliacion" />
+          <NavigationProperty Name="TipoServicio" Relationship="DeltaDBModel.FK__TipoServi__id_ti__51BA1E3A" FromRole="TipoServicio_Afiliacion" ToRole="TipoServicio" />
+        </EntityType>
+        <Association Name="FK__TipoServi__id_af__52AE4273">
+          <End Type="DeltaDBModel.Afiliacion" Role="Afiliacion" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DeltaDBModel.TipoServicio_Afiliacion" Role="TipoServicio_Afiliacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Afiliacion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TipoServicio_Afiliacion">
+              <PropertyRef Name="id_afiliacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TipoServi__id_ti__51BA1E3A">
+          <End Type="DeltaDBModel.TipoServicio" Role="TipoServicio" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DeltaDBModel.TipoServicio_Afiliacion" Role="TipoServicio_Afiliacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoServicio">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TipoServicio_Afiliacion">
+              <PropertyRef Name="id_tipoServicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Transportista_Afiliacion">
+          <Key>
+            <PropertyRef Name="id_transportista" />
+            <PropertyRef Name="id_afiliacion" />
+          </Key>
+          <Property Name="id_transportista" Type="Int32" Nullable="false" />
+          <Property Name="id_afiliacion" Type="Int32" Nullable="false" />
+          <Property Name="estado" Type="Int32" Nullable="false" />
+          <Property Name="create_at" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Afiliacion" Relationship="DeltaDBModel.FK__Transport__id_af__731B1205" FromRole="Transportista_Afiliacion" ToRole="Afiliacion" />
+          <NavigationProperty Name="Transportista" Relationship="DeltaDBModel.FK__Transport__id_tr__7226EDCC" FromRole="Transportista_Afiliacion" ToRole="Transportista" />
+        </EntityType>
+        <Association Name="FK__Transport__id_af__731B1205">
+          <End Type="DeltaDBModel.Afiliacion" Role="Afiliacion" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DeltaDBModel.Transportista_Afiliacion" Role="Transportista_Afiliacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Afiliacion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Transportista_Afiliacion">
+              <PropertyRef Name="id_afiliacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transport__id_tr__7226EDCC">
+          <End Type="DeltaDBModel.Transportista" Role="Transportista" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DeltaDBModel.Transportista_Afiliacion" Role="Transportista_Afiliacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transportista">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Transportista_Afiliacion">
+              <PropertyRef Name="id_transportista" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombres" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="apellidos" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="empresa" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="celular" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="create_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="id_afiliacion" Type="Int32" />
+          <NavigationProperty Name="Afiliacion" Relationship="DeltaDBModel.FK__Cliente__id_afil__0FB750B3" FromRole="Cliente" ToRole="Afiliacion" />
+          <NavigationProperty Name="SolicitudCotizacion" Relationship="DeltaDBModel.FK__Solicitud__id_cl__04459E07" FromRole="Cliente" ToRole="SolicitudCotizacion" />
+        </EntityType>
+        <Association Name="FK__Cliente__id_afil__0FB750B3">
+          <End Type="DeltaDBModel.Afiliacion" Role="Afiliacion" Multiplicity="0..1" />
+          <End Type="DeltaDBModel.Cliente" Role="Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Afiliacion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="id_afiliacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SolicitudCotizacion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_cliente" Type="Int32" Nullable="false" />
+          <Property Name="id_servicio" Type="Int32" Nullable="false" />
+          <Property Name="id_tipoCamion" Type="Int32" />
+          <Property Name="id_rutaOrigen" Type="Int32" />
+          <Property Name="ciudadOrigen" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="id_rutaDestino" Type="Int32" />
+          <Property Name="ciudadDestino" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="pesoCarga" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="id_unidadPeso" Type="Int32" />
+          <Property Name="volumenCarga" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="id_unidadVolumen" Type="Int32" />
+          <Property Name="imoCarga" Type="Boolean" />
+          <Property Name="capacidadAlmacenamiento" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="id_unidadCapacidad" Type="Int32" />
+          <Property Name="tiempoAlmacenamiento" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="id_unidadTiempo" Type="Int32" />
+          <Property Name="comentarios" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="create_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="id_afiliacion" Type="Int32" />
+          <NavigationProperty Name="Afiliacion" Relationship="DeltaDBModel.FK__Solicitud__id_af__10AB74EC" FromRole="SolicitudCotizacion" ToRole="Afiliacion" />
+          <NavigationProperty Name="Cliente" Relationship="DeltaDBModel.FK__Solicitud__id_cl__04459E07" FromRole="SolicitudCotizacion" ToRole="Cliente" />
+          <NavigationProperty Name="Ruta" Relationship="DeltaDBModel.FK__Solicitud__id_ru__07220AB2" FromRole="SolicitudCotizacion" ToRole="Ruta" />
+          <NavigationProperty Name="Ruta1" Relationship="DeltaDBModel.FK__Solicitud__id_ru__08162EEB" FromRole="SolicitudCotizacion" ToRole="Ruta" />
+          <NavigationProperty Name="TipoServicio" Relationship="DeltaDBModel.FK__Solicitud__id_se__0539C240" FromRole="SolicitudCotizacion" ToRole="TipoServicio" />
+          <NavigationProperty Name="TipoCamion" Relationship="DeltaDBModel.FK__Solicitud__id_ti__062DE679" FromRole="SolicitudCotizacion" ToRole="TipoCamion" />
+          <NavigationProperty Name="UnidadMedida" Relationship="DeltaDBModel.FK__Solicitud__id_un__090A5324" FromRole="SolicitudCotizacion" ToRole="UnidadMedida" />
+          <NavigationProperty Name="UnidadMedida1" Relationship="DeltaDBModel.FK__Solicitud__id_un__09FE775D" FromRole="SolicitudCotizacion" ToRole="UnidadMedida" />
+          <NavigationProperty Name="UnidadMedida2" Relationship="DeltaDBModel.FK__Solicitud__id_un__0AF29B96" FromRole="SolicitudCotizacion" ToRole="UnidadMedida" />
+          <NavigationProperty Name="UnidadMedida3" Relationship="DeltaDBModel.FK__Solicitud__id_un__0BE6BFCF" FromRole="SolicitudCotizacion" ToRole="UnidadMedida" />
+        </EntityType>
+        <Association Name="FK__Solicitud__id_af__10AB74EC">
+          <End Type="DeltaDBModel.Afiliacion" Role="Afiliacion" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DeltaDBModel.SolicitudCotizacion" Role="SolicitudCotizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Afiliacion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SolicitudCotizacion">
+              <PropertyRef Name="id_afiliacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Solicitud__id_cl__04459E07">
+          <End Type="DeltaDBModel.Cliente" Role="Cliente" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DeltaDBModel.SolicitudCotizacion" Role="SolicitudCotizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SolicitudCotizacion">
+              <PropertyRef Name="id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Solicitud__id_ru__07220AB2">
+          <End Type="DeltaDBModel.Ruta" Role="Ruta" Multiplicity="0..1" />
+          <End Type="DeltaDBModel.SolicitudCotizacion" Role="SolicitudCotizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ruta">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SolicitudCotizacion">
+              <PropertyRef Name="id_rutaOrigen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Solicitud__id_ru__08162EEB">
+          <End Type="DeltaDBModel.Ruta" Role="Ruta" Multiplicity="0..1" />
+          <End Type="DeltaDBModel.SolicitudCotizacion" Role="SolicitudCotizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ruta">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SolicitudCotizacion">
+              <PropertyRef Name="id_rutaDestino" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Solicitud__id_se__0539C240">
+          <End Type="DeltaDBModel.TipoServicio" Role="TipoServicio" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DeltaDBModel.SolicitudCotizacion" Role="SolicitudCotizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoServicio">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SolicitudCotizacion">
+              <PropertyRef Name="id_servicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Solicitud__id_ti__062DE679">
+          <End Type="DeltaDBModel.TipoCamion" Role="TipoCamion" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DeltaDBModel.SolicitudCotizacion" Role="SolicitudCotizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoCamion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SolicitudCotizacion">
+              <PropertyRef Name="id_tipoCamion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Solicitud__id_un__090A5324">
+          <End Type="DeltaDBModel.UnidadMedida" Role="UnidadMedida" Multiplicity="0..1" />
+          <End Type="DeltaDBModel.SolicitudCotizacion" Role="SolicitudCotizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnidadMedida">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SolicitudCotizacion">
+              <PropertyRef Name="id_unidadPeso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Solicitud__id_un__09FE775D">
+          <End Type="DeltaDBModel.UnidadMedida" Role="UnidadMedida" Multiplicity="0..1" />
+          <End Type="DeltaDBModel.SolicitudCotizacion" Role="SolicitudCotizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnidadMedida">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SolicitudCotizacion">
+              <PropertyRef Name="id_unidadVolumen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Solicitud__id_un__0AF29B96">
+          <End Type="DeltaDBModel.UnidadMedida" Role="UnidadMedida" Multiplicity="0..1" />
+          <End Type="DeltaDBModel.SolicitudCotizacion" Role="SolicitudCotizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnidadMedida">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SolicitudCotizacion">
+              <PropertyRef Name="id_unidadCapacidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Solicitud__id_un__0BE6BFCF">
+          <End Type="DeltaDBModel.UnidadMedida" Role="UnidadMedida" Multiplicity="0..1" />
+          <End Type="DeltaDBModel.SolicitudCotizacion" Role="SolicitudCotizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnidadMedida">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SolicitudCotizacion">
+              <PropertyRef Name="id_unidadTiempo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ConfiguracionTarea">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="estado" Type="Int32" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="permitirDocs" Type="Int32" Nullable="false" />
+          <Property Name="create_at" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="InfoArchivo" Relationship="DeltaDBModel.FK__InfoArchi__id_ta__39AD8A7F" FromRole="ConfiguracionTarea" ToRole="InfoArchivo" />
+        </EntityType>
+        <EntityType Name="InfoArchivo">
+          <Key>
+            <PropertyRef Name="id_tarea" />
+            <PropertyRef Name="id_proyecto" />
+          </Key>
+          <Property Name="id_tarea" Type="Int32" Nullable="false" />
+          <Property Name="id_proyecto" Type="Int32" Nullable="false" />
+          <Property Name="create_at" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="ConfiguracionTarea" Relationship="DeltaDBModel.FK__InfoArchi__id_ta__39AD8A7F" FromRole="InfoArchivo" ToRole="ConfiguracionTarea" />
+          <Property Name="extension" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK__InfoArchi__id_ta__39AD8A7F">
+          <End Type="DeltaDBModel.ConfiguracionTarea" Role="ConfiguracionTarea" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DeltaDBModel.InfoArchivo" Role="InfoArchivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConfiguracionTarea">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="InfoArchivo">
+              <PropertyRef Name="id_tarea" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ConfiguracionAPI">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="urlApi" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="nombreDb" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="pass" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="estado" Type="Int32" Nullable="false" />
+          <Property Name="id_entornoApi" Type="Int32" Nullable="false" />
+          <Property Name="create_at" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="EntornoAPI" Relationship="DeltaDBModel.FK__Configura__id_en__48EFCE0F" FromRole="ConfiguracionAPI" ToRole="EntornoAPI" />
+        </EntityType>
+        <EntityType Name="EntornoAPI">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="create_at" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="ConfiguracionAPI" Relationship="DeltaDBModel.FK__Configura__id_en__48EFCE0F" FromRole="EntornoAPI" ToRole="ConfiguracionAPI" />
+        </EntityType>
+        <Association Name="FK__Configura__id_en__48EFCE0F">
+          <End Type="DeltaDBModel.EntornoAPI" Role="EntornoAPI" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DeltaDBModel.ConfiguracionAPI" Role="ConfiguracionAPI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EntornoAPI">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ConfiguracionAPI">
+              <PropertyRef Name="id_entornoApi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="correo" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="tipo_c" Type="Byte" Nullable="false" />
+          <Property Name="tipo_s" Type="Byte" Nullable="false" />
+          <Property Name="tipo_e" Type="Byte" Nullable="false" />
+          <Property Name="id_afiliacion" Type="Int32" />
+          <Property Name="create_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="enviar_password" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Afiliacion" Relationship="DeltaDBModel.FK__usuario__id_afil__3F9B6DFF" FromRole="usuario" ToRole="Afiliacion" />
+        </EntityType>
+        <Association Name="FK__usuario__id_afil__3F9B6DFF">
+          <End Type="DeltaDBModel.Afiliacion" Role="Afiliacion" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DeltaDBModel.usuario" Role="usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Afiliacion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="id_afiliacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DeltaDBModelStoreContainer" CdmEntityContainer="DeltaDBEntities1">
+          <EntitySetMapping Name="Ruta">
+            <EntityTypeMapping TypeName="DeltaDBModel.Ruta">
+              <MappingFragment StoreEntitySet="Ruta">
+                <ScalarProperty Name="create_at" ColumnName="create_at" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="pais" ColumnName="pais" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoCamion">
+            <EntityTypeMapping TypeName="DeltaDBModel.TipoCamion">
+              <MappingFragment StoreEntitySet="TipoCamion">
+                <ScalarProperty Name="create_at" ColumnName="create_at" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoServicio">
+            <EntityTypeMapping TypeName="DeltaDBModel.TipoServicio">
+              <MappingFragment StoreEntitySet="TipoServicio">
+                <ScalarProperty Name="create_at" ColumnName="create_at" />
+                <ScalarProperty Name="servicio" ColumnName="servicio" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Afiliacion">
+            <EntityTypeMapping TypeName="DeltaDBModel.Afiliacion">
+              <MappingFragment StoreEntitySet="Afiliacion">
+                <ScalarProperty Name="create_at" ColumnName="create_at" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="empresa" ColumnName="empresa" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoUnidadMedida">
+            <EntityTypeMapping TypeName="DeltaDBModel.TipoUnidadMedida">
+              <MappingFragment StoreEntitySet="TipoUnidadMedida">
+                <ScalarProperty Name="create_at" ColumnName="create_at" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UnidadMedida">
+            <EntityTypeMapping TypeName="DeltaDBModel.UnidadMedida">
+              <MappingFragment StoreEntitySet="UnidadMedida">
+                <ScalarProperty Name="abreviatura" ColumnName="abreviatura" />
+                <ScalarProperty Name="create_at" ColumnName="create_at" />
+                <ScalarProperty Name="id_tipoUnidad" ColumnName="id_tipoUnidad" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transportista">
+            <EntityTypeMapping TypeName="DeltaDBModel.Transportista">
+              <MappingFragment StoreEntitySet="Transportista">
+                <ScalarProperty Name="correoElectronico" ColumnName="correoElectronico" />
+                <ScalarProperty Name="create_at" ColumnName="create_at" />
+                <ScalarProperty Name="id_tipoCamion" ColumnName="id_tipoCamion" />
+                <ScalarProperty Name="celular" ColumnName="celular" />
+                <ScalarProperty Name="empresa" ColumnName="empresa" />
+                <ScalarProperty Name="apellidos" ColumnName="apellidos" />
+                <ScalarProperty Name="nombres" ColumnName="nombres" />
+                <ScalarProperty Name="nroLicencia" ColumnName="nroLicencia" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transportista_Ruta">
+            <EntityTypeMapping TypeName="DeltaDBModel.Transportista_Ruta">
+              <MappingFragment StoreEntitySet="Transportista_Ruta">
+                <ScalarProperty Name="create_at" ColumnName="create_at" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="id_ruta" ColumnName="id_ruta" />
+                <ScalarProperty Name="id_transportista" ColumnName="id_transportista" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoServicio_Afiliacion">
+            <EntityTypeMapping TypeName="DeltaDBModel.TipoServicio_Afiliacion">
+              <MappingFragment StoreEntitySet="TipoServicio_Afiliacion">
+                <ScalarProperty Name="create_at" ColumnName="create_at" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="id_afiliacion" ColumnName="id_afiliacion" />
+                <ScalarProperty Name="id_tipoServicio" ColumnName="id_tipoServicio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DeltaDBModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transportista_Afiliacion">
+            <EntityTypeMapping TypeName="DeltaDBModel.Transportista_Afiliacion">
+              <MappingFragment StoreEntitySet="Transportista_Afiliacion">
+                <ScalarProperty Name="create_at" ColumnName="create_at" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="id_afiliacion" ColumnName="id_afiliacion" />
+                <ScalarProperty Name="id_transportista" ColumnName="id_transportista" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cliente">
+            <EntityTypeMapping TypeName="DeltaDBModel.Cliente">
+              <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="id_afiliacion" ColumnName="id_afiliacion" />
+                <ScalarProperty Name="create_at" ColumnName="create_at" />
+                <ScalarProperty Name="celular" ColumnName="celular" />
+                <ScalarProperty Name="empresa" ColumnName="empresa" />
+                <ScalarProperty Name="apellidos" ColumnName="apellidos" />
+                <ScalarProperty Name="nombres" ColumnName="nombres" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SolicitudCotizacion">
+            <EntityTypeMapping TypeName="DeltaDBModel.SolicitudCotizacion">
+              <MappingFragment StoreEntitySet="SolicitudCotizacion">
+                <ScalarProperty Name="id_afiliacion" ColumnName="id_afiliacion" />
+                <ScalarProperty Name="create_at" ColumnName="create_at" />
+                <ScalarProperty Name="comentarios" ColumnName="comentarios" />
+                <ScalarProperty Name="id_unidadTiempo" ColumnName="id_unidadTiempo" />
+                <ScalarProperty Name="tiempoAlmacenamiento" ColumnName="tiempoAlmacenamiento" />
+                <ScalarProperty Name="id_unidadCapacidad" ColumnName="id_unidadCapacidad" />
+                <ScalarProperty Name="capacidadAlmacenamiento" ColumnName="capacidadAlmacenamiento" />
+                <ScalarProperty Name="imoCarga" ColumnName="imoCarga" />
+                <ScalarProperty Name="id_unidadVolumen" ColumnName="id_unidadVolumen" />
+                <ScalarProperty Name="volumenCarga" ColumnName="volumenCarga" />
+                <ScalarProperty Name="id_unidadPeso" ColumnName="id_unidadPeso" />
+                <ScalarProperty Name="pesoCarga" ColumnName="pesoCarga" />
+                <ScalarProperty Name="ciudadDestino" ColumnName="ciudadDestino" />
+                <ScalarProperty Name="id_rutaDestino" ColumnName="id_rutaDestino" />
+                <ScalarProperty Name="ciudadOrigen" ColumnName="ciudadOrigen" />
+                <ScalarProperty Name="id_rutaOrigen" ColumnName="id_rutaOrigen" />
+                <ScalarProperty Name="id_tipoCamion" ColumnName="id_tipoCamion" />
+                <ScalarProperty Name="id_servicio" ColumnName="id_servicio" />
+                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConfiguracionTarea">
+            <EntityTypeMapping TypeName="DeltaDBModel.ConfiguracionTarea">
+              <MappingFragment StoreEntitySet="ConfiguracionTarea">
+                <ScalarProperty Name="create_at" ColumnName="create_at" />
+                <ScalarProperty Name="permitirDocs" ColumnName="permitirDocs" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InfoArchivo">
+            <EntityTypeMapping TypeName="DeltaDBModel.InfoArchivo">
+              <MappingFragment StoreEntitySet="InfoArchivo">
+                <ScalarProperty Name="extension" ColumnName="extension" />
+                <ScalarProperty Name="create_at" ColumnName="create_at" />
+                <ScalarProperty Name="id_proyecto" ColumnName="id_proyecto" />
+                <ScalarProperty Name="id_tarea" ColumnName="id_tarea" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConfiguracionAPI">
+            <EntityTypeMapping TypeName="DeltaDBModel.ConfiguracionAPI">
+              <MappingFragment StoreEntitySet="ConfiguracionAPI">
+                <ScalarProperty Name="create_at" ColumnName="create_at" />
+                <ScalarProperty Name="id_entornoApi" ColumnName="id_entornoApi" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="pass" ColumnName="pass" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="nombreDb" ColumnName="nombreDb" />
+                <ScalarProperty Name="urlApi" ColumnName="urlApi" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EntornoAPI">
+            <EntityTypeMapping TypeName="DeltaDBModel.EntornoAPI">
+              <MappingFragment StoreEntitySet="EntornoAPI">
+                <ScalarProperty Name="create_at" ColumnName="create_at" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuario">
+            <EntityTypeMapping TypeName="DeltaDBModel.usuario">
+              <MappingFragment StoreEntitySet="usuario">
+                <ScalarProperty Name="enviar_password" ColumnName="enviar_password" />
+                <ScalarProperty Name="create_at" ColumnName="create_at" />
+                <ScalarProperty Name="id_afiliacion" ColumnName="id_afiliacion" />
+                <ScalarProperty Name="tipo_e" ColumnName="tipo_e" />
+                <ScalarProperty Name="tipo_s" ColumnName="tipo_s" />
+                <ScalarProperty Name="tipo_c" ColumnName="tipo_c" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

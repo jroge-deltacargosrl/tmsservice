@@ -1,0 +1,13 @@
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\TMS (Services y WebApp)\TMS Service\TMS_Services.AzureBussinessLogic\bin\Debug\netstandard2.0\TMS_Services.AzureBussinessLogic.deps.json
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\TMS (Services y WebApp)\TMS Service\TMS_Services.AzureBussinessLogic\bin\Debug\netstandard2.0\TMS_Services.AzureBussinessLogic.dll
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\TMS (Services y WebApp)\TMS Service\TMS_Services.AzureBussinessLogic\obj\Debug\netstandard2.0\TMS_Services.AzureBussinessLogic.csprojAssemblyReference.cache
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\TMS (Services y WebApp)\TMS Service\TMS_Services.AzureBussinessLogic\obj\Debug\netstandard2.0\TMS_Services.AzureBussinessLogic.AssemblyInfoInputs.cache
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\TMS (Services y WebApp)\TMS Service\TMS_Services.AzureBussinessLogic\obj\Debug\netstandard2.0\TMS_Services.AzureBussinessLogic.AssemblyInfo.cs
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\TMS (Services y WebApp)\TMS Service\TMS_Services.AzureBussinessLogic\bin\Debug\netstandard2.0\System.Configuration.dll
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\TMS (Services y WebApp)\TMS Service\TMS_Services.AzureBussinessLogic\bin\Debug\netstandard2.0\System.Security.dll
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\TMS (Services y WebApp)\TMS Service\TMS_Services.AzureBussinessLogic\bin\Debug\netstandard2.0\System.Configuration.xml
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\TMS (Services y WebApp)\TMS Service\TMS_Services.AzureBussinessLogic\bin\Debug\netstandard2.0\System.Security.xml
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\TMS (Services y WebApp)\TMS Service\TMS_Services.AzureBussinessLogic\obj\Debug\netstandard2.0\TMS_Services.AzureBussinessLogic.csproj.CopyComplete
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\TMS (Services y WebApp)\TMS Service\TMS_Services.AzureBussinessLogic\bin\Debug\netstandard2.0\TMS_Services.AzureBussinessLogic.pdb
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\TMS (Services y WebApp)\TMS Service\TMS_Services.AzureBussinessLogic\obj\Debug\netstandard2.0\TMS_Services.AzureBussinessLogic.dll
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\TMS (Services y WebApp)\TMS Service\TMS_Services.AzureBussinessLogic\obj\Debug\netstandard2.0\TMS_Services.AzureBussinessLogic.pdb

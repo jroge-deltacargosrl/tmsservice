@@ -1,0 +1,8 @@
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\TMS (Services y WebApp)\TMS Service\TMS_Services.DataAccess\bin\Debug\netstandard2.0\TMS_Services.DataAccess.deps.json
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\TMS (Services y WebApp)\TMS Service\TMS_Services.DataAccess\bin\Debug\netstandard2.0\TMS_Services.DataAccess.dll
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\TMS (Services y WebApp)\TMS Service\TMS_Services.DataAccess\bin\Debug\netstandard2.0\TMS_Services.DataAccess.pdb
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\TMS (Services y WebApp)\TMS Service\TMS_Services.DataAccess\obj\Debug\netstandard2.0\TMS_Services.DataAccess.csprojAssemblyReference.cache
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\TMS (Services y WebApp)\TMS Service\TMS_Services.DataAccess\obj\Debug\netstandard2.0\TMS_Services.DataAccess.AssemblyInfoInputs.cache
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\TMS (Services y WebApp)\TMS Service\TMS_Services.DataAccess\obj\Debug\netstandard2.0\TMS_Services.DataAccess.AssemblyInfo.cs
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\TMS (Services y WebApp)\TMS Service\TMS_Services.DataAccess\obj\Debug\netstandard2.0\TMS_Services.DataAccess.dll
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\TMS (Services y WebApp)\TMS Service\TMS_Services.DataAccess\obj\Debug\netstandard2.0\TMS_Services.DataAccess.pdb
